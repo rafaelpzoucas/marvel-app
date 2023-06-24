@@ -12,7 +12,11 @@ const heroCardHeight = {
   md: '250px',
 }
 
-export const HeroCard = styled.div<HeroCardProps>`
+export const HeroCard = styled.a<HeroCardProps>`
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
   ${(props) => {
     return `
       height: ${heroCardHeight[props.size]};
@@ -54,7 +58,6 @@ export const HeroCard = styled.div<HeroCardProps>`
     font-size: 1rem;
 
     strong {
-      font-family: 'Comic Neue', cursive;
       text-transform: uppercase;
     }
   }

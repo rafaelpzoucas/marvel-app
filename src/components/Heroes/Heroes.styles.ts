@@ -15,7 +15,7 @@ const heroesRowColumns = {
 export const HeroesRowContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.875rem;
   padding: 1rem;
 
   width: 100vw;
@@ -27,7 +27,7 @@ export const HeroesRow = styled.div<HeroesRowProps>`
   ${(props) => {
     return `grid-template-columns: ${heroesRowColumns[props.columns]};`
   }}
-  gap: 1rem;
+  gap: 0.875rem;
 
   width: 100%;
 `

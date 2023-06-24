@@ -16,20 +16,23 @@ export function Heroes({ columns, heroes }: HeroesRowProps) {
       {columns === '3x2' ? (
         <Hero
           size="md"
+          id={heroes[0]?.id}
           hero={heroes[0]?.nome}
-          thumbPath={`${heroes[0].thumb.path}.${heroes[0].thumb.extension}`}
+          thumbPath={`${heroes[0]?.thumb.path}.${heroes[0]?.thumb.extension}`}
         />
       ) : (
         <>
           <Hero
             size={columns === '1x2' ? 'xs' : 'sm'}
+            id={heroes[0]?.id}
             hero={heroes[0]?.nome}
-            thumbPath={`${heroes[0].thumb.path}.${heroes[0].thumb.extension}`}
+            thumbPath={`${heroes[0]?.thumb.path}.${heroes[0]?.thumb.extension}`}
           />
           <Hero
             size={columns === '2x1' ? 'xs' : 'sm'}
+            id={heroes[1]?.id}
             hero={heroes[1]?.nome}
-            thumbPath={`${heroes[1].thumb.path}.${heroes[1].thumb.extension}`}
+            thumbPath={`${heroes[1]?.thumb.path}.${heroes[1]?.thumb.extension}`}
           />
         </>
       )}

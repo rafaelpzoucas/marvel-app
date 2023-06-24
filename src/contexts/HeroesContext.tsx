@@ -6,6 +6,7 @@ export const HeroesContext = createContext({} as HeroesContextProps)
 
 export function HeroesProvider({ children }: HeroesProviderProps) {
   const [heroes, setHeroes] = useState<HeroProps[]>([])
+  const [hero, setHero] = useState([])
 
   const publicKey = 'bf65759ebf4d4558799cd8a301c68904'
   const timestamp = Date.now()
@@ -26,12 +27,35 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
     }
   }
 
+  async function fetchHeroById(id: string) {
+    const url = `https://gateway.marvel.com/v1/public/characters/${id}?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
+
+    try {
+      const response = await fetch(url)
+      if (response) {
+        const data = await response.json()
+        setHero(data.data.results[0])
+      }
+    } catch (error) {
+      console.log('Não foi possível buscar os heróis', error)
+    }
+  }
+
+  function shuffleHeroes(array: HeroProps[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]]
+    }
+  }
+
   return (
     <HeroesContext.Provider
       value={{
         heroes,
-        setHeroes,
+        hero,
         fetchHeroes,
+        fetchHeroById,
+        shuffleHeroes,
       }}
     >
       {children}
