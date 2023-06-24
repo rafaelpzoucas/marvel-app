@@ -60,7 +60,7 @@ export const HeroCard = styled.div<HeroCardProps>`
   }
 
   .name-limit {
-    max-width: 112px;
+    max-width: calc(100% - 8px);
 
     white-space: nowrap;
     overflow: hidden;
