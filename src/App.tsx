@@ -74,14 +74,20 @@ export function App() {
   // console.log(heroes)
 
   return (
-    <main>
-      <Header />
+    <>
+      <div
+        id="noise"
+        className="fixed inset-0 z-50 pointer-events-none opacity-20"
+      ></div>
+      <main>
+        <Header />
 
-      <HeroesRowContainer>
-        {newHeroes.map((hero) => (
-          <Heroes key={hero.id} columns={hero.columns} heroes={hero.heroes} />
-        ))}
-      </HeroesRowContainer>
-    </main>
+        <HeroesRowContainer>
+          {newHeroes.map((hero) => (
+            <Heroes key={hero.id} columns={hero.columns} heroes={hero.heroes} />
+          ))}
+        </HeroesRowContainer>
+      </main>
+    </>
   )
 }

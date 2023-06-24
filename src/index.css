@@ -9,3 +9,14 @@
 body {
   background-color: #FFFFEE;
 }
+
+#noise {
+  background-image: url(../public/noise.png);
+  background-repeat: repeat;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.6;
+}
