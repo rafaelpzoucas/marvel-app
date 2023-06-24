@@ -4,7 +4,7 @@ export interface HeroesProviderProps {
   children: ReactNode
 }
 
-export interface HeroProps {
+export interface HeroesProps {
   id: number
   columns: '3x2' | '2x1' | '1x2'
   name: string
@@ -12,10 +12,17 @@ export interface HeroProps {
   thumbnail: { path: string; extension: string }
 }
 
+export interface HeroProps {
+  id: number
+  name: string
+  description: string
+  thumbnail: { path: string; extension: string }
+}
+
 export interface HeroesContextProps {
-  heroes: HeroProps[]
+  heroes: HeroesProps[]
   hero: HeroProps
   fetchHeroes: () => void
   fetchHeroById: (id: string) => void
-  shuffleHeroes: (array: HeroProps[]) => void
+  shuffleHeroes: (array: HeroesProps[]) => void
 }

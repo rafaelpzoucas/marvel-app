@@ -1,12 +1,22 @@
 import { createContext, useState } from 'react'
-import { HeroProps, HeroesContextProps, HeroesProviderProps } from './types'
+import {
+  HeroesProps,
+  HeroesContextProps,
+  HeroesProviderProps,
+  HeroProps,
+} from './types'
 import md5 from 'md5'
 
 export const HeroesContext = createContext({} as HeroesContextProps)
 
 export function HeroesProvider({ children }: HeroesProviderProps) {
-  const [heroes, setHeroes] = useState<HeroProps[]>([])
-  const [hero, setHero] = useState([])
+  const [heroes, setHeroes] = useState<HeroesProps[]>([])
+  const [hero, setHero] = useState<HeroProps>({
+    id: 0,
+    name: '',
+    description: '',
+    thumbnail: { path: '', extension: '' },
+  })
 
   const publicKey = 'bf65759ebf4d4558799cd8a301c68904'
   const timestamp = Date.now()
