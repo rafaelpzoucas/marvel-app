@@ -8,7 +8,7 @@ export function Header() {
       <img src={logo} width={94} height={34} alt="Marvel" />
 
       <SearchButton>
-        <MagnifyingGlass size={24} />
+        <MagnifyingGlass size={32} />
       </SearchButton>
     </HeaderContainer>
   )

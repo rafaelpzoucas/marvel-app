@@ -7,9 +7,9 @@ interface HeroCardProps {
 }
 
 const heroCardHeight = {
-  xs: '112px',
-  sm: '112px',
-  md: '224px',
+  xs: '132px',
+  sm: '132px',
+  md: '250px',
 }
 
 export const HeroCard = styled.div<HeroCardProps>`
@@ -29,6 +29,19 @@ export const HeroCard = styled.div<HeroCardProps>`
     object-fit: cover;
   }
 
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+
+    background-color: white;
+    border: 1px solid black;
+    padding: 4px 4px;
+  }
+
   .hero-name {
     position: absolute;
     bottom: 0.25rem;
@@ -38,9 +51,10 @@ export const HeroCard = styled.div<HeroCardProps>`
     border: 1px solid black;
     padding: 0px 4px;
 
-    font-size: 0.75rem;
+    font-size: 1rem;
 
     strong {
+      font-family: 'Comic Neue', cursive;
       text-transform: uppercase;
     }
   }

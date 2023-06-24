@@ -18,7 +18,7 @@ export function App() {
   // Embaralhar o array original
   shuffleArray(heroes)
 
-  const newArray = []
+  const newHeroes = []
 
   // Conjunto para armazenar IDs utilizados
   const usedIds = new Set()
@@ -41,7 +41,7 @@ export function App() {
     } while (columns === previousColumns)
 
     const group: any = {
-      id: newArray.length + 1,
+      id: newHeroes.length + 1,
       columns,
       heroes: [],
     }
@@ -63,11 +63,9 @@ export function App() {
       }
     }
 
-    newArray.push(group)
+    newHeroes.push(group)
     previousColumns = columns
   }
-
-  console.log(newArray)
 
   useEffect(() => {
     fetchHeroes()
@@ -80,7 +78,7 @@ export function App() {
       <Header />
 
       <HeroesRowContainer>
-        {newArray.map((hero) => (
+        {newHeroes.map((hero) => (
           <Heroes key={hero.id} columns={hero.columns} heroes={hero.heroes} />
         ))}
       </HeroesRowContainer>
