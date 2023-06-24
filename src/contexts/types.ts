@@ -8,7 +8,7 @@ export interface HeroProps {
   id: number
   columns: '3x2' | '2x1' | '1x2'
   name: string
-  thumbnail: any
+  thumbnail: string
 }
 
 export interface HeroesContextProps {
