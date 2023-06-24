@@ -7,7 +7,8 @@ export interface HeroesProviderProps {
 export interface HeroProps {
   id: number
   columns: '3x2' | '2x1' | '1x2'
-  heroes: { id: number; nome: string }[]
+  name: string
+  thumbnail: any
 }
 
 export interface HeroesContextProps {
