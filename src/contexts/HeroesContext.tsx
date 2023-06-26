@@ -1,16 +1,12 @@
 import { createContext, useState } from 'react'
-import {
-  HeroesProps,
-  HeroesContextProps,
-  HeroesProviderProps,
-  HeroProps,
-} from './types'
+import { HeroesContextProps, HeroesProviderProps, HeroProps } from './types'
 import md5 from 'md5'
 
 export const HeroesContext = createContext({} as HeroesContextProps)
 
 export function HeroesProvider({ children }: HeroesProviderProps) {
-  const [heroes, setHeroes] = useState<HeroesProps[]>([])
+  const [heroes, setHeroes] = useState<HeroProps[]>([])
+  const [filteredHeroes, setFilteredHeroes] = useState<HeroProps[]>([])
   const [hero, setHero] = useState<HeroProps>({
     id: 0,
     name: '',
@@ -24,12 +20,13 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
   const hash = md5(timestamp + privateKey + publicKey).toString()
 
   async function fetchHeroes() {
-    const url = `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
+    const url = `https://gateway.marvel.com/v1/public/characters?limit=100&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
 
     try {
       const response = await fetch(url)
       if (response) {
         const data = await response.json()
+
         setHeroes(data.data.results)
       }
     } catch (error) {
@@ -51,6 +48,21 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
     }
   }
 
+  async function fetchHeroByName(name: string) {
+    const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&limit=21&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
+
+    try {
+      const response = await fetch(url)
+      if (response) {
+        const data = await response.json()
+
+        setFilteredHeroes(data.data.results)
+      }
+    } catch (error) {
+      console.log('Não foi possível buscar os heróis', error)
+    }
+  }
+
   function shuffleHeroes(array: HeroProps[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -62,9 +74,11 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
     <HeroesContext.Provider
       value={{
         heroes,
+        filteredHeroes,
         hero,
         fetchHeroes,
         fetchHeroById,
+        fetchHeroByName,
         shuffleHeroes,
       }}
     >

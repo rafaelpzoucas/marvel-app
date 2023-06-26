@@ -4,21 +4,21 @@ import { HeroCard, HeroCardVariant } from './Hero.styles'
 interface HeroCardProps {
   size: HeroCardVariant
   id: number
-  hero: string
+  name: string
   thumbPath: string
 }
 
-export function Hero({ size, id, hero, thumbPath }: HeroCardProps) {
+export function Hero({ size, id, name, thumbPath }: HeroCardProps) {
   return (
     <HeroCard size={size} href={`/hero/${id}`}>
       <div className="arrow">
         <ArrowRight size={16} weight="bold" />
       </div>
 
-      <img src={thumbPath} alt={hero} />
+      <img src={thumbPath} alt={name} />
 
       <div className={`hero-name ${size === 'xs' && 'name-limit'}`}>
-        <strong className={size === 'xs' ? 'name-limit' : ''}>{hero}</strong>
+        <strong className={size === 'xs' ? 'name-limit' : ''}>{name}</strong>
       </div>
     </HeroCard>
   )

@@ -10,6 +10,11 @@ export const HeaderContainer = styled.header`
 `
 
 export const SearchButton = styled.button`
-  background: transparent;
-  border: none;
+  background-color: white;
+  border: 1px solid black;
+
+  width: 2.875rem;
+  height: 2.875rem;
+
+  line-height: 100%;
 `

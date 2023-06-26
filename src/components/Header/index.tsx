@@ -1,15 +1,13 @@
-import { HeaderContainer, SearchButton } from './Header.styles'
+import { HeaderContainer } from './Header.styles'
 import logo from '../../../public/logo.svg'
-import { MagnifyingGlass } from 'phosphor-react'
+import { SearchModal } from '../SearchModal'
 
 export function Header() {
   return (
     <HeaderContainer>
       <img src={logo} width={94} height={34} alt="Marvel" />
 
-      <SearchButton>
-        <MagnifyingGlass size={32} />
-      </SearchButton>
+      <SearchModal />
     </HeaderContainer>
   )
 }
