@@ -1,6 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export type HeroCardVariant = 'xs' | 'sm' | 'md'
+
+const pulseAnimation = keyframes`
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0.7
+  }
+`
 
 interface HeroCardProps {
   size: HeroCardVariant
@@ -69,4 +78,14 @@ export const HeroCard = styled.a<HeroCardProps>`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+`
+
+export const HeroSkeleton = styled.div`
+  width: 100%;
+  height: 112px;
+  border: 1px solid #000;
+
+  background-color: gray;
+
+  animation: ${pulseAnimation} 500ms infinite;
 `

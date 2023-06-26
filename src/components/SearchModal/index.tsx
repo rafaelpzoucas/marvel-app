@@ -11,18 +11,36 @@ import {
 import { useHeroes } from '../../contexts/useHeroes'
 import { Hero } from '../Hero'
 import { useState, useEffect } from 'react'
-import { debounce } from 'lodash'
+import { HeroSkeleton } from '../Hero/Hero.styles'
 
 export function SearchModal() {
-  const { heroes, filteredHeroes, fetchHeroByName } = useHeroes()
+  const { heroes, filteredHeroes, setFilteredHeroes, fetchHeroByName } =
+    useHeroes()
   const [filter, setFilter] = useState('')
-
-  const debouncedFetchHeroByName = debounce(fetchHeroByName, 1000)
 
   const heroList = filter !== '' ? filteredHeroes : heroes
 
   useEffect(() => {
-    debouncedFetchHeroByName(filter)
+    let timerId: ReturnType<typeof setTimeout>
+
+    function delayedFetch() {
+      if (filter !== '') {
+        fetchHeroByName(filter)
+      } else {
+        setFilteredHeroes([])
+      }
+    }
+
+    function delayRequest() {
+      clearTimeout(timerId)
+      timerId = setTimeout(delayedFetch, 1000)
+    }
+
+    delayRequest()
+
+    return () => {
+      clearTimeout(timerId)
+    }
   }, [filter])
 
   return (
@@ -68,7 +86,11 @@ export function SearchModal() {
                 />
               ))
             ) : (
-              <div>Carregando...</div>
+              <>
+                {heroes.map((skeleton, index) => (
+                  <HeroSkeleton key={index} />
+                ))}
+              </>
             )}
           </HeroesList>
         </DialogContent>

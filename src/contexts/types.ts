@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, Dispatch, SetStateAction } from 'react'
 
 export interface HeroesProviderProps {
   children: ReactNode
@@ -20,6 +20,7 @@ export interface HeroesGroupProps {
 export interface HeroesContextProps {
   heroes: HeroProps[]
   filteredHeroes: HeroProps[]
+  setFilteredHeroes: Dispatch<SetStateAction<HeroProps[]>>
   hero: HeroProps
   fetchHeroes: () => void
   fetchHeroById: (id: string) => void

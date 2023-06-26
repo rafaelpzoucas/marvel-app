@@ -75,6 +75,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
       value={{
         heroes,
         filteredHeroes,
+        setFilteredHeroes,
         hero,
         fetchHeroes,
         fetchHeroById,
