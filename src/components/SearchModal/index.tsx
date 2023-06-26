@@ -11,7 +11,6 @@ import {
 import { useHeroes } from '../../contexts/useHeroes'
 import { Hero } from '../Hero'
 import { useState, useEffect } from 'react'
-import { HeroSkeleton } from '../Hero/Hero.styles'
 
 export function SearchModal() {
   const { heroes, filteredHeroes, setFilteredHeroes, fetchHeroByName } =
@@ -87,9 +86,10 @@ export function SearchModal() {
               ))
             ) : (
               <>
-                {heroes.map((skeleton, index) => (
+                {/* {heroes.map((index) => (
                   <HeroSkeleton key={index} />
-                ))}
+                ))} */}
+                <div>Carregando...</div>
               </>
             )}
           </HeroesList>
