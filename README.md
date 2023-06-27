@@ -13,3 +13,7 @@
 
   - e depois para executar em modo de desenvolvimento, rode: 
   ```npm run dev```
+
+# Links
+  - [Design no Figma](https://www.figma.com/file/4z5TzcJDUjg0dlXGsswCHi/Marvel's-app?type=design&node-id=2%3A14&mode=design&t=hlzaD7WU0Rrj5qn5-1)
+  - [Deploy na Vercel](https://marvel-app-z.vercel.app/)
