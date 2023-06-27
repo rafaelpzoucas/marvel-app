@@ -1,3 +1,4 @@
+import { HeroSkeleton } from '../components/Hero/Hero.styles'
 import { Heroes } from '../components/Heroes'
 import { HeroesRowContainer } from '../components/Heroes/Heroes.styles'
 import { useHeroes } from '../contexts/useHeroes'
@@ -10,14 +11,41 @@ export function Home() {
 
   return (
     <HeroesRowContainer>
-      {newHeroes.map((hero, index) => (
-        <Heroes
-          key={index}
-          id={hero.id}
-          columns={hero.columns}
-          heroes={hero.heroes}
-        />
-      ))}
+      {newHeroes.length > 0 ? (
+        newHeroes.map((hero, index) => (
+          <Heroes
+            key={index}
+            id={hero.id}
+            columns={hero.columns}
+            heroes={hero.heroes}
+          />
+        ))
+      ) : (
+        <>
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+          <HeroSkeleton />
+        </>
+      )}
     </HeroesRowContainer>
   )
 }

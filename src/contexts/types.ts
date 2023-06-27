@@ -26,4 +26,6 @@ export interface HeroesContextProps {
   fetchHeroById: (id: string) => void
   fetchHeroByName: (name: string) => void
   shuffleHeroes: (array: HeroProps[]) => void
+  isLoading: boolean
+  setIsLoading: Dispatch<SetStateAction<boolean>>
 }

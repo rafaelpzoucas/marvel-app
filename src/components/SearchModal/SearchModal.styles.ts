@@ -3,17 +3,32 @@ import * as Dialog from '@radix-ui/react-dialog'
 import styled, { keyframes } from 'styled-components'
 
 const slideAnimation = keyframes`
-  0% {
+  from {
     transform: translateX(100%);
   }
-  100% {
+  to {
     transform: translateX(0%);
   }
 `
 
-export const DialogContent = styled(Dialog.Content)`
-  animation: ${slideAnimation} 250ms ease-in-out;
+const fadeAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
+export const DialogOverlay = styled(Dialog.Overlay)`
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  animation: ${fadeAnimation} 250ms ease-in-out;
+`
+
+export const DialogContent = styled(Dialog.Content)`
   position: fixed;
   inset: 0;
 
@@ -27,6 +42,21 @@ export const DialogContent = styled(Dialog.Content)`
   gap: 1rem;
 
   padding: 1rem;
+
+  animation: ${slideAnimation} 250ms ease-in-out;
+
+  @media (min-width: 768px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 550px;
+    height: 700px;
+
+    border: 1px solid black;
+
+    animation: ${fadeAnimation} 250ms ease-in-out;
+  }
 `
 
 export const SearchModalHeader = styled.header`
@@ -37,7 +67,7 @@ export const SearchModalHeader = styled.header`
 
   strong {
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
 
     background-color: white;
@@ -64,6 +94,7 @@ export const SearchInput = styled.div`
   input {
     background-color: transparent;
     border: none;
+    width: 100%;
 
     &:focus {
       outline: none;
@@ -75,8 +106,8 @@ export const CloseButton = styled.button`
   background-color: white;
   border: 1px solid black;
 
-  width: 2.875rem;
-  height: 2.875rem;
+  width: 2rem;
+  height: 2rem;
 
   line-height: 100%;
 `

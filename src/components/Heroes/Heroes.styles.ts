@@ -19,6 +19,7 @@ export const HeroesRowContainer = styled.div`
   padding: 1rem;
 
   width: 100vw;
+  max-width: 768px;
 `
 
 export const HeroesRow = styled.div<HeroesRowProps>`

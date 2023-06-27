@@ -3,6 +3,7 @@ import { Router } from './components/Router'
 import { BrowserRouter } from 'react-router-dom'
 import { useHeroes } from './contexts/useHeroes'
 import { useEffect } from 'react'
+import { Main } from './App.styles'
 
 export function App() {
   const { fetchHeroes } = useHeroes()
@@ -14,10 +15,10 @@ export function App() {
   return (
     <BrowserRouter>
       <div id="noise"></div>
-      <main>
+      <Main>
         <Header />
         <Router />
-      </main>
+      </Main>
     </BrowserRouter>
   )
 }

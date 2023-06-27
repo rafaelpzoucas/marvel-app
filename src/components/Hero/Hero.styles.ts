@@ -6,8 +6,11 @@ const pulseAnimation = keyframes`
   0% {
     opacity: 1
   }
+  50% {
+    opacity: 0.5
+  }
   100% {
-    opacity: 0.7
+    opacity: 1
   }
 `
 
@@ -87,5 +90,5 @@ export const HeroSkeleton = styled.div`
 
   background-color: gray;
 
-  animation: ${pulseAnimation} 500ms infinite;
+  animation: ${pulseAnimation} 1500ms infinite;
 `

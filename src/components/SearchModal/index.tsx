@@ -4,18 +4,22 @@ import * as Dialog from '@radix-ui/react-dialog'
 import {
   CloseButton,
   DialogContent,
+  DialogOverlay,
   HeroesList,
   SearchInput,
   SearchModalHeader,
 } from './SearchModal.styles'
 import { useHeroes } from '../../contexts/useHeroes'
 import { Hero } from '../Hero'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { HeroSkeleton } from '../Hero/Hero.styles'
 
 export function SearchModal() {
   const { heroes, filteredHeroes, setFilteredHeroes, fetchHeroByName } =
     useHeroes()
   const [filter, setFilter] = useState('')
+
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   const heroList = filter !== '' ? filteredHeroes : heroes
 
@@ -42,8 +46,14 @@ export function SearchModal() {
     }
   }, [filter])
 
+  const handleDialogOpen = () => {
+    setTimeout(() => {
+      searchInputRef.current?.focus()
+    }, 200)
+  }
+
   return (
-    <Dialog.Root>
+    <Dialog.Root onOpenChange={handleDialogOpen}>
       <Dialog.Trigger asChild>
         <SearchButton>
           <MagnifyingGlass size={24} />
@@ -51,6 +61,7 @@ export function SearchModal() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
+        <DialogOverlay />
         <DialogContent>
           <SearchModalHeader>
             <Dialog.Title asChild>
@@ -66,6 +77,7 @@ export function SearchModal() {
           <SearchInput>
             <MagnifyingGlass size={24} />
             <input
+              ref={searchInputRef}
               type="text"
               placeholder={`Type hero's name`}
               value={filter}
@@ -86,10 +98,24 @@ export function SearchModal() {
               ))
             ) : (
               <>
-                {/* {heroes.map((index) => (
-                  <HeroSkeleton key={index} />
-                ))} */}
-                <div>Carregando...</div>
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
+                <HeroSkeleton />
               </>
             )}
           </HeroesList>

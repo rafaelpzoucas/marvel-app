@@ -13,6 +13,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
     description: '',
     thumbnail: { path: '', extension: '' },
   })
+  const [isLoading, setIsLoading] = useState(true)
 
   const publicKey = 'bf65759ebf4d4558799cd8a301c68904'
   const timestamp = Date.now()
@@ -20,6 +21,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
   const hash = md5(timestamp + privateKey + publicKey).toString()
 
   async function fetchHeroes() {
+    setIsLoading(true)
     const url = `https://gateway.marvel.com/v1/public/characters?limit=100&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
 
     try {
@@ -27,6 +29,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
       if (response) {
         const data = await response.json()
 
+        setIsLoading(false)
         setHeroes(data.data.results)
       }
     } catch (error) {
@@ -35,12 +38,15 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
   }
 
   async function fetchHeroById(id: string) {
+    setIsLoading(true)
     const url = `https://gateway.marvel.com/v1/public/characters/${id}?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
 
     try {
       const response = await fetch(url)
       if (response) {
         const data = await response.json()
+
+        setIsLoading(false)
         setHero(data.data.results[0])
       }
     } catch (error) {
@@ -49,6 +55,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
   }
 
   async function fetchHeroByName(name: string) {
+    setIsLoading(true)
     const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&limit=21&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
 
     try {
@@ -56,6 +63,7 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
       if (response) {
         const data = await response.json()
 
+        setIsLoading(false)
         setFilteredHeroes(data.data.results)
       }
     } catch (error) {
@@ -81,6 +89,8 @@ export function HeroesProvider({ children }: HeroesProviderProps) {
         fetchHeroById,
         fetchHeroByName,
         shuffleHeroes,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

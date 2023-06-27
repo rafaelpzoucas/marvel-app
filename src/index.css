@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #f2eecb;
   font-family: 'Comic Neue', cursive;
@@ -20,4 +24,8 @@ body {
   z-index: 50;
   pointer-events: none;
   opacity: 0.8;
+}
+
+button {
+  cursor: pointer;
 }

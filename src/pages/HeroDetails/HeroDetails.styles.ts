@@ -9,7 +9,8 @@ const pulseAnimation = keyframes`
   }
 `
 export const HeroDetailsContainer = styled.div`
-  width: 100vw;
+  width: 100%;
+  max-width: 768px;
   padding: 1rem;
 
   display: flex;
@@ -26,7 +27,6 @@ export const BackButton = styled.button`
   font-size: 1rem;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
 
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@ export const HeroThumb = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    max-height: 700px;
     object-fit: cover;
   }
 `

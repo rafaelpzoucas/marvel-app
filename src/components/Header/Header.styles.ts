@@ -3,18 +3,18 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.header`
   display: flex;
   padding: 24px 16px 16px 16px;
-  justify-content: space-between;
   align-items: center;
-  align-self: stretch;
-  width: 100vw;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 768px;
 `
 
 export const SearchButton = styled.button`
   background-color: white;
   border: 1px solid black;
 
-  width: 2.875rem;
-  height: 2.875rem;
+  padding: 0.25rem 0.375rem;
 
   line-height: 100%;
 `

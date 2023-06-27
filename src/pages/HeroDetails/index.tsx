@@ -16,6 +16,7 @@ import {
 import { useNewHeroes } from '../../hooks/useNewHeroes'
 import { Heroes } from '../../components/Heroes'
 import { HeroesRowContainer } from '../../components/Heroes/Heroes.styles'
+import { HeroSkeleton } from '../../components/Hero/Hero.styles'
 
 export function HeroDetails() {
   const navigate = useNavigate()
@@ -74,14 +75,49 @@ export function HeroDetails() {
       <HeroesRowContainer>
         <Title>more heroes</Title>
 
-        {newHeroes.map((hero, index) => (
-          <Heroes
-            key={index}
-            id={hero.id}
-            columns={hero.columns}
-            heroes={hero.heroes}
-          />
-        ))}
+        {newHeroes.length > 0 ? (
+          newHeroes.map((hero, index) => (
+            <Heroes
+              key={index}
+              id={hero.id}
+              columns={hero.columns}
+              heroes={hero.heroes}
+            />
+          ))
+        ) : (
+          <>
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+            <HeroSkeleton />
+          </>
+        )}
       </HeroesRowContainer>
     </>
   )
