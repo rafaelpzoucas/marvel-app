@@ -73,7 +73,7 @@ export function HeroDetails() {
       </HeroDetailsContainer>
 
       <HeroesRowContainer>
-        <Title>more heroes</Title>
+        <Title>more heroes: </Title>
 
         {newHeroes.length > 0 ? (
           newHeroes.map((hero, index) => (
