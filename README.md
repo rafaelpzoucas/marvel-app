@@ -9,7 +9,7 @@
 
 # Como executar o projeto
   - Rode o seguinte comando no terminal para instalar todas as dependências: 
-  ```npm install
+  ```npm install```
 
   - e depois para executar em modo de desenvolvimento, rode: 
-  ```npm run dev
+  ```npm run dev```
